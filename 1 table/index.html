@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>про строки в таблице 2</title>
+    <script type="text/javascript">
+        function addRows() {
+            var table = document.getElementById('emptbl');
+            var rowCount = table.rows.length;
+            var cellCount = table.rows[0].cells.length;
+            var row = table.insertRow(rowCount);
+            for (var i = 0; i <= cellCount; i++) {
+                var cell = 'cell' + i;
+                cell = row.insertCell(i);
+                var copycel = document.getElementById('col' + i).innerHTML;
+                cell.innerHTML = copycel;
+            }
+        }
+
+        function deleteRows() {
+            var table = document.getElementById('emptbl');
+            var rowCount = table.rows.length;
+            if (rowCount > '2') {
+                var row = table.deleteRow(rowCount - 1);
+                rowCount--;
+            } else {
+                alert('э строка одна');
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="#" method="post">
+    <table id="emptbl">
+        <tr>
+            <th>№ пп</th>
+            <th>Название</th>
+            <th>Адрес</th>
+            <th>Район</th>
+        </tr>
+        <tr>
+            <td id="col0"><input type="text" name="number[]" value=""/></td>
+            <td id="col1"><input type="text" name="name[]" value=""/></td>
+            <td id="col2"><input type="text" name="adress[]" value=""/></td>
+            <td id="col3"><input type="text" name="area[]" value=""/></td>
+        </tr>
+    </table>
+    <input type="button" value="Добавить строку" onClick="addRows()"/>
+    <input type="button" value="Удалить строку" onClick="deleteRows()"/>
+
+</form>
+</body>
+</html>
